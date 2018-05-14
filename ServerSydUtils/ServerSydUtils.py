@@ -1,17 +1,26 @@
 import discord
+from cogs.utils import checks
 from discord.ext import commands
 from .utils.dataIO import fileIO
 from random import choice as randchoice
 import os
+import logging
+import traceback
+import aiohttp
 
+log = logging.getLogger("ServerSydUtils")
 
 class ServerSydUtils:
 
     """Insult Cog"""
     def __init__(self, bot):
         self.bot = bot
+        self.session = aiohttp.ClientSession(loop=self.bot.loop)
 
-    @_set.command()
+    def __unload(self):
+        self.session.close()
+
+    @commands.command()
     @checks.is_co()
     async def setservicon(self, url):
         """Sets server icon"""
@@ -28,4 +37,4 @@ class ServerSydUtils:
 
 
 def setup(bot):
-    bot.add_cog(Insult(bot))
+    bot.add_cog(ServerSydUtils(bot))
