@@ -30,7 +30,7 @@ class ServerSydUtils:
             await self.bot.edit_server(server=self.bot.get_server(370628772489068565), icon=data)
             await self.bot.say("Done.")
         except Exception as e:
-            await self.bot.say(traceback.print_exc())
+            await self.bot.say(e)
 
 
 def setup(bot):
