@@ -21,7 +21,7 @@ class ServerSydUtils:
         self.session.close()
 
     @commands.command()
-    @checks.is_co()
+    @checks.is_owner()
     async def setservicon(self, url):
         """Sets server icon"""
         try:
