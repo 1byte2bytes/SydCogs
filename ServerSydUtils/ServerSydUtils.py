@@ -27,7 +27,8 @@ class ServerSydUtils:
         try:
             async with self.session.get(url) as r:
                 data = await r.read()
-            await self.bot.edit_server(server=self.bot.get_server(370628772489068565), icon=data)
+            server = self.bot.get_server("370628772489068565")
+            await self.bot.edit_server(server, icon=data)
             await self.bot.say("Done.")
         except Exception as e:
             await self.bot.say(e)
